@@ -209,8 +209,8 @@ class LoginForgotPasswordController extends LoginController {
         /* generate a password and encode it and the username into the url */
         $password = $this->login->generatePassword();
         $confirmParams = array(
-            'lp' => urlencode(base64_encode($password)),
-            'lu' => urlencode(base64_encode($fields['username']))
+            'lp' => base64_encode($password),
+            'lu' => base64_encode($fields['username'])
         );
         $confirmUrl = $this->modx->makeUrl($this->getProperty('resetResourceId',1),'',$confirmParams,'full');
 
